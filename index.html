@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>bitHound</title>
+
+		<meta name="description" content="">
+		<meta name="author" content="bitHound">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="icon" href="img/symbol_colour.png" type="image/x-icon">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/theme/bithound.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<!-- Main Title Slide -->
+				<section class="main-title" data-background="img/symbol_reversed.svg" data-background-size="150%">
+					<img src="img/fulllogo_reversed.svg" class="simple-img full-logo" />
+					<h1>Distributed Computing with JavaScript</h1>
+					<p>
+						<small>Presented by Dan Silvestru and Gord Tanner</small><br />
+						<a href="http://bithound.io">bithound.io</a> / <a href="http://twitter.com/bithoundio">@bithoundio</a>
+					</p>	
+				</section>
+
+        <section data-background="img/symbol_reversed.svg" data-background-size="70%" data-background-position="120%">
+					<h2>computering is hard!</h2>
+				</section>
+
+        <section data-background="img/symbol_reversed.svg" data-background-size="70%" data-background-position="120%">
+					<h2>Who are we?</h2>
+          <h3><a href="http://bithound.io">bithound.io</a></h3>
+          </br>
+          <ul>
+            <li>Dan Silivestru (<a href="http://twitter.com/confusement">@confusement</a>)</li>
+            <li>Gord Tanner (<a href="http://twitter.com/gordtanner">@gordtanner</a>)</li>
+          </ul>
+				</section>
+
+				<section class="main-title" data-background="img/symbol_reversed.svg" data-background-size="150%">
+          <h2>Lasers!</h2>
+          <img src="img/swag.jpg" alt="" />
+				</section>
+
+				<!-- Basic Slide -->
+        <section data-background="img/symbol_reversed.svg" data-background-size="70%" data-background-position="120%">
+					<h2>What do we do?</h2>
+          </br></br>
+          <p>We help you build and deliver the best quality software, every single day!</p>
+				</section>
+
+        <section data-background="img/symbol_reversed.svg" data-background-size="70%" data-background-position="120%">
+					<h2>Problem:</h2>
+          <pre>
+
+                      > time jshint .
+
+                      ---------------------
+                      (lots of errors here)
+                      ---------------------
+
+                      7368 errors
+
+                      real  0m29.321s
+                      user  0m28.627s
+                      sys 0m0.508s
+
+          </pre>
+          <h5 style="text-align: left;">- Do this for 1K+ commits in a project</h5>
+          <h5 style="text-align: left;">- There are many more things to look at</h5>
+				</section>
+
+        <section data-background="img/symbol_reversed.svg" data-background-size="70%" data-background-position="120%">
+					<h2>Waiting sucks</h2>
+          <img src="img/waiting.jpg" alt="" />
+				</section>
+
+        <section data-background="img/symbol_reversed.svg" data-background-size="70%" data-background-position="120%">
+					<h2>but....</h2>
+          <img src="img/singlethread.jpg" alt="" />
+				</section>
+
+        <section data-background="img/symbol_reversed.svg" data-background-size="70%" data-background-position="120%">
+					<h2>cluster</h2>
+          <img src="img/cluster.jpg" alt="" />
+				</section>
+
+        <section data-background="img/symbol_reversed.svg" data-background-size="70%" data-background-position="120%">
+					<h2>To the Cloud!</h2>
+          <img src="img/tothecloud.jpeg" alt="" />
+				</section>
+
+        <section data-background="img/symbol_reversed.svg" data-background-size="70%" data-background-position="120%">
+          <img src="img/zeromq.png" alt="" />
+          <blockquote>ØMQ looks like an embeddable networking library but acts like a concurrency framework.</blockquote>
+				</section>
+
+        <section data-background="img/symbol_reversed.svg" data-background-size="70%" data-background-position="120%">
+          <pre>
+                  .------------.        .--------------.
+                  |            |        |              |
+                  | TCP socket +------->|              | ZAP!
+                  |            | BOOM!  |  0MQ socket  |
+                  '------------'        |              |  POW!!
+                    ^    ^    ^         |              |
+                    |    |    |         '--------------'
+                    |    |    |
+                    |    |    |
+                    |    |    '--------- Spandex
+                    |    |
+                    |    '-------------- Cosmic rays
+
+                   Illegal radioisotopes from
+                   secret Soviet atomic city
+          </pre>
+				</section>
+
+        <section data-background="img/symbol_reversed.svg" data-background-size="70%" data-background-position="120%">
+        <h2>Sockets that carry <i style='color: red;'>atomic messages</i> across various <i style='color: red;'>transports</i> like:</h2>
+          <ul>
+            <li>in-process</li>
+            <li>inter-process (shared memory)</li>
+            <li>TCP</li>
+            <li>multicast</li>
+          </ul>
+				</section>
+
+        <section data-background="img/symbol_reversed.svg" data-background-size="70%" data-background-position="120%">
+        <h2>You can <i style='color: red'>connect</i> sockets <i style='color: red;'>N-to-N</i> with patterns like</h2>
+            <ul>
+              <li>fan-out, fan-in</li>
+              <li>publish-subscribe</li>
+              <li>task distribution</li>
+              <li>request-reply</li>
+            </ul>
+          </section>
+
+        <section data-background="img/symbol_reversed.svg" data-background-size="70%" data-background-position="120%">
+          <pre>
+                                #------------#
+                                |   Client   |
+                                +------------+
+                                |    REQ     |
+                                '---+--------'
+                                    |    ^
+                                    |    |
+                              Hello |    | World
+                                    |    |
+                                    v    |
+                                .--------+---.
+                                |    REP     |
+                                +------------+
+                                |   Server   |
+                                #------------#
+            
+          </pre>
+        </section>
+
+        <section data-background="img/symbol_reversed.svg" data-background-size="70%" data-background-position="120%">
+          <pre>
+                               #-------------#
+                               |  Publisher  |
+                               +-------------+
+                               |     PUB     |
+                               '-------------'
+                                    bind
+                                      |
+                                      |
+                                   updates
+                                      |
+                      .---------------+---------------.
+                      |               |               |
+                   updates         updates         updates
+                      |               |               |
+                      |               |               |
+                      v               v               v
+                   connect         connect         connect
+                .------------.  .------------.  .------------.
+                |    SUB     |  |    SUB     |  |    SUB     |
+                +------------+  +------------+  +------------+
+                | Subscriber |  | Subscriber |  | Subscriber |
+                #------------#  #------------#  #------------#
+
+          </pre>
+        </section>
+
+        <section data-background="img/symbol_reversed.svg" data-background-size="70%" data-background-position="120%">
+          <pre>
+                                #-------------#
+                                |  Ventilator |
+                                +-------------+
+                                |    PUSH     |
+                                '------+------'
+                                       |
+                                     tasks
+                                       |
+                          .------------+-------------.
+                          |            |             |
+                          v            v             v
+                    .----------.  .----------.  .----------.
+                    |   PULL   |  |   PULL   |  |   PULL   |
+                    +----------+  +----------+  +----------+
+                    |  Worker  |  |  Worker  |  |  Worker  |
+                    +----------+  +----------+  +----------+
+                    |   PUSH   |  |   PUSH   |  |   PUSH   |
+                    '----+-----'  '----+-----'  '----+-----'
+                          |            |             |
+                          '------------+-------------'
+                                       |
+                                    results
+                                       |
+                                       v
+                                .-------------.
+                                |    PULL     |
+                                +-------------+
+                                |    Sink     |
+                                #-------------#
+          </pre>
+        </section>
+
+				<section class="main-title" data-background="img/symbol_reversed.svg" data-background-size="150%">
+          <h1>Codez</h1>
+				</section>
+
+				<section class="main-title" data-background="img/symbol_reversed.svg" data-background-size="150%">
+          <img src="img/hackers.gif" alt="" />
+				</section>
+
+				<section class="main-title" data-background="img/symbol_reversed.svg" data-background-size="150%">
+          <h3>Her: "How many letters are in 10?"</h3>
+          <h3>Me: "three, why?"</h3>
+				</section>
+
+				<section class="main-title" data-background="img/symbol_reversed.svg" data-background-size="150%">
+        <ul>
+          <li><h2><i>ten</i> has 3 letters</h2></li>
+          <li><h2>three has 5 letters</h2></li>
+          <li><h2>five has 4 letters</h2></li>
+          <li><h2>four has 4 letters</h2></li>
+          <li><h2 style="color: red;">that works</h2></li>
+        </ul>
+				</section>
+
+				<section class="main-title" data-background="img/symbol_reversed.svg" data-background-size="150%">
+          <img src="img/backseat.jpg" alt="" />
+				</section>
+
+				<section class="main-title" data-background="img/symbol_reversed.svg" data-background-size="150%">
+          <pre>
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+</pre>
+				</section>
+
+				<section class="main-title" data-background="img/symbol_reversed.svg" data-background-size="150%">
+          <blockquote>If you do have zmq installed ...</blockquote>
+          <p>
+          	<a href="http://zeromq.org/intro:get-the-software">http://zeromq.org/intro:get-the-software</a>
+          </p>
+          <h5>May the fours be with you</h5>
+          <pre>
+                              npm install fourism
+                      http://github.com/gtanner/fourism
+          </pre>
+				</section>
+
+				<section class="main-title" data-background="img/symbol_reversed.svg" data-background-size="150%">
+					<img src="img/fulllogo_reversed.svg" class="simple-img full-logo" />
+					<h2>Thank you!</h2>
+          <h3><a href="http://bithound.io/preview">bithound.io/preview</a></h3>
+          <ul>
+            <li>Dan Silivestru (<a href="http://twitter.com/confusement">@confusement</a>)</li>
+            <li>Gord Tanner (<a href="http://twitter.com/gordtanner">@gordtanner</a>)</li>
+          </ul>
+          </br>
+          </br>
+					<p>
+						<small><a href="http://bithound.io">bithound.io</a> / <a href="http://twitter.com/bithoundio">@bithoundio</a></small>
+					</p>	
+				</section>
+			</div>
+
+		</div>
+		<div class="footer">
+      <!--<img src="img/wordmark_grey_reversed.svg" class="simple-img wordmark" />-->
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
